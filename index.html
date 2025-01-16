@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Olá, {% if name %}{{ name }}{% else %}Matheus Santos do Nascimento{% endif %}!</h1>
+    <h2>Prontuário: {{ prontuario }}</h2>
+    {% if not known %}
+        <p>Prazer em conhecê-lo!</p>
+    {% else %}
+        <p>Feliz em vê-lo novamente!</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro de Curso{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Cadastro de Curso</h1>
+</div>
+
+<form method="POST" action="{{ url_for('curso') }}">
+    {{ form.hidden_tag() }} <!-- Para incluir o token CSRF -->
+    <div class="form-group">
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.description.label }}<br>
+        {{ form.description(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+
+<h2>Relação de cursos cadastrados</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.name }}</td>
+            <td>{{ course.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
